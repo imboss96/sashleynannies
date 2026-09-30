@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sashleynannies.co.ke/sitemap.xml
