@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: sashley-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    branch: main
+    buildCommand: npm ci --omit=dev
+    startCommand: npm run server
+    healthCheckPath: /api/health
+    domains:
+      - api.sashleynannies.co.ke
+    envVars:
+      - key: BREVO_API_KEY
+        sync: false
+      - key: BREVO_SENDER_EMAIL
+        sync: false
+      - key: BREVO_SENDER_NAME
+        value: Sashley Nannies
+      - key: CONTACT_EMAIL
+        value: info@sashleynannies.co.ke
