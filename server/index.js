@@ -73,7 +73,7 @@ app.post('/api/contact', async (req, res) => {
               <tr><td style="padding:28px 30px 12px;">
                 <div style="color:#c52c68;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">New booking request</div>
                 <h1 style="margin:8px 0 8px;color:#29245f;font-size:25px;line-height:1.25;">A family has requested a match</h1>
-                <p style="margin:0;color:#687386;font-size:14px;line-height:1.6;">Review the details below and reply to this email to contact the client.</p>
+                <p style="margin:0;color:#687386;font-size:14px;line-height:1.6;">Review the details below to contact the client directly.</p>
               </td></tr>
               <tr><td style="padding:16px 30px 8px;">
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #eee8ed;border-collapse:collapse;">
@@ -122,7 +122,6 @@ app.post('/api/contact', async (req, res) => {
           email: senderEmail,
         },
         to: [{ email: process.env.CONTACT_EMAIL || 'info@sashleynannies.co.ke' }],
-        replyTo: { email, name },
         subject: `New enquiry: ${service} request`,
         htmlContent: emailHtml,
         textContent: emailText,
