@@ -123,6 +123,7 @@ app.post('/api/contact', async (req, res) => {
         },
         to: [{ email: process.env.CONTACT_EMAIL || 'info@sashleynannies.co.ke' }],
         subject: `New enquiry: ${service} request`,
+        htmlContent: emailHtml,
         textContent: emailText,
       }),
     })
