@@ -1,4 +1,7 @@
 import { useRef, useState } from 'react'
+import { SITE } from '../config/site'
+
+const whatsappUrl = `https://wa.me/${SITE.phone.replace('+', '')}`
 
 const initialForm = {
   service: '',
@@ -12,6 +15,7 @@ const initialForm = {
   message: '',
   isEmployer: false,
   privacyConsent: false,
+  website: '',
 }
 
 const stepTitles = ['Service details', 'Location & budget', 'Contact details']
@@ -113,13 +117,17 @@ export default function LeadForm({ initialService = '' }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    if (isSubmitting) return
     setIsSubmitting(true)
     setStatus({ type: '', message: '' })
 
+    const controller = new AbortController()
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000)
     try {
       const response = await fetch('https://api.sashleynannies.co.ke/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -130,6 +138,7 @@ export default function LeadForm({ initialService = '' }) {
           startDate: form.startDate,
           budget: form.budget,
           message: form.message,
+          website: form.website,
         }),
       })
 
@@ -137,11 +146,19 @@ export default function LeadForm({ initialService = '' }) {
       if (!response.ok) throw new Error(data.message || 'Unable to submit your request right now.')
 
       setStatus({ type: 'success', message: data.message || 'Your request has been submitted successfully.' })
+      if (data.honeypot) {
+        setForm(initialValues)
+        setStep(0)
+        return
+      }
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({ event: 'form_submit', form: 'employer_enquiry' })
       setForm(initialValues)
       setStep(0)
     } catch (error) {
-      setStatus({ type: 'error', message: error.message || 'Something went wrong while sending your request.' })
+      setStatus({ type: 'error', message: error.name === 'AbortError' ? 'The request timed out before the server responded.' : error.message || 'Something went wrong while sending your request.' })
     } finally {
+      window.clearTimeout(timeoutId)
       setIsSubmitting(false)
     }
   }
@@ -270,7 +287,8 @@ export default function LeadForm({ initialService = '' }) {
         </section>
       )}
 
-      {status.type === 'error' && <div className="form-status error" role="alert">{status.message}</div>}
+      <label className="form-honeypot" aria-hidden="true">Website<input name="website" value={form.website} onChange={handleChange} tabIndex={-1} autoComplete="off" /></label>
+      {status.type === 'error' && <div className="form-status error" role="alert">{status.message} Please contact us on <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a> or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</div>}
     </form>
   )
 }

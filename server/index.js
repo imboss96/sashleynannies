@@ -8,7 +8,14 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 3001
 
-app.use(cors())
+const allowedOrigins = new Set(['https://sashleynannies.co.ke', 'https://www.sashleynannies.co.ke'])
+app.use(cors({
+  origin(origin, callback) {
+    const isLocalDevelopment = process.env.NODE_ENV !== 'production' && /^http:\/\/localhost(:\d+)?$/.test(origin || '')
+    if (!origin || allowedOrigins.has(origin) || isLocalDevelopment) return callback(null, true)
+    return callback(new Error('Origin is not allowed by CORS.'))
+  },
+}))
 app.use(express.json())
 
 const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, (character) => ({
@@ -24,7 +31,9 @@ app.get('/api/health', (req, res) => {
 })
 
 app.post('/api/contact', async (req, res) => {
-  const { name, email, phone, service, household, location, startDate, budget, message } = req.body || {}
+  const { name, email, phone, service, household, location, startDate, budget, message, website } = req.body || {}
+
+  if (website) return res.status(202).json({ message: 'Your request has been submitted successfully.', honeypot: true })
 
   if (!name || !email || !phone || !service || !household || !location || !startDate || !budget) {
     return res.status(400).json({ message: 'Please fill in all required fields.' })

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
+import { SITE, fullAddress } from '../config/site'
 
 const termsSections = [
   {
     title: '1. Acceptance of Terms',
-    body: 'By accessing or using www.sashleynannies.co.ke, you agree to these Terms & Conditions and any additional terms or notices displayed on the Website. If you do not agree, please do not use the Website or submit information through its forms.',
+    body: `By accessing or using ${SITE.url}, you agree to these Terms & Conditions and any additional terms or notices displayed on the Website. If you do not agree, please do not use the Website or submit information through its forms.`,
   },
   {
     title: '2. Website Purpose',
@@ -63,7 +64,7 @@ export default function TermsPage() {
         <div className="container">
           <span className="eyebrow">Sashley Nannies</span>
           <h1>Terms &amp; Conditions</h1>
-          <p>For <a href="https://www.sashleynannies.co.ke">www.sashleynannies.co.ke</a></p>
+          <p>For <a href={SITE.url}>{SITE.url}</a></p>
           <p className="legal-updated">Effective date: 29 September 2026</p>
         </div>
       </section>
@@ -80,7 +81,7 @@ export default function TermsPage() {
         ))}
         <article className="privacy-section">
           <h2>14. Contact</h2>
-          <p><strong>Sashley Nannies</strong><br />Website: <a href="https://www.sashleynannies.co.ke">www.sashleynannies.co.ke</a><br />Email: <a href="mailto:info@sashleynannies.co.ke">info@sashleynannies.co.ke</a><br />Phone: <a href="tel:+254741448680">+254 741 448 680</a><br />Address: The Delta House, 3rd Floor, Room 326, University Way, Nairobi</p>
+          <p><strong>Sashley Nannies</strong><br />Website: <a href={SITE.url}>{SITE.url}</a><br />Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />Phone: <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a><br />Address: {fullAddress}</p>
         </article>
       </section>
     </div>

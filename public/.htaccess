@@ -1,9 +1,40 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
+RewriteEngine On
 
+# Canonical host redirects
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://sashleynannies.co.ke%{REQUEST_URI} [L,R=301]
+
+# Old WordPress URLs. Full map supplied by dmoons will be appended here.
+RewriteRule ^about-us/?$ / [R=301,L]
+RewriteRule ^about/?$ / [R=301,L]
+RewriteRule ^our-services/?$ /services [R=301,L]
+RewriteRule ^contacts/?$ /contact [R=301,L]
+RewriteRule ^faq/?$ /#faq [NE,R=301,L]
+RewriteRule ^application-form/?$ /careers [R=301,L]
+RewriteRule ^(news|news-list)/?$ / [R=301,L]
+
+RewriteRule ^(tag|category|author|feed|wp-content|wp-includes|wp-json|wp-admin)(/|$) - [G,L]
+RewriteRule ^wp-login\.php$ - [G,L]
+RewriteRule ^xmlrpc\.php$ - [G,L]
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteBase /
   RewriteRule ^api(?:/|$) - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.html [L]
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+?)/?$ /$1/index.html [L]
 </IfModule>

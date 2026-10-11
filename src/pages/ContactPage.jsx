@@ -1,4 +1,5 @@
 import LeadForm from '../components/LeadForm'
+import { SITE, fullAddress } from '../config/site'
 
 export default function ContactPage() {
   return (
@@ -12,9 +13,9 @@ export default function ContactPage() {
             we are ready to help you find the right fit.
           </p>
           <ul className="contact-details">
-            <li><strong>Phone:</strong> +254 741 448 680</li>
-            <li><strong>Email:</strong> info@sashleynannies.co.ke</li>
-            <li><strong>Location:</strong> Nairobi, Kenya</li>
+            <li><strong>Phone:</strong> {SITE.phoneDisplay}</li>
+            <li><strong>Email:</strong> {SITE.email}</li>
+            <li><strong>Location:</strong> {fullAddress}</li>
           </ul>
         </div>
 

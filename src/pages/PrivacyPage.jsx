@@ -46,7 +46,7 @@ const policySections = [
     ],
     link: { text: 'Learn about data subject rights at the ODPC', href: 'https://www.odpc.go.ke/rights-of-a-data-subject/' },
   },
-  { title: '9. Cookies and Website Technologies', paragraphs: ['The Website may use cookies and similar technologies for necessary website functionality, security, analytics, preferences and other permitted purposes. Where consent is legally required for non-essential cookies, appropriate controls should be provided on the Website.'] },
+  { title: '9. Cookies and Website Technologies', paragraphs: ['This Website uses cookies and similar technologies to support website functionality and security. You can manage or delete cookies through your browser settings, although disabling some cookies may affect how the Website works. Where non-essential cookies are used and consent is legally required, we will request consent before using them.'] },
   { title: '10. Children', paragraphs: ['Our recruitment and employment services are intended for adults. We do not knowingly request or collect personal information from children except where legally permitted and necessary, with appropriate safeguards.'] },
   { title: '11. Changes to This Privacy Policy', paragraphs: ['We may update this Privacy Policy from time to time as our services, Website or legal requirements change. The updated version will be published on this page with a revised effective date.'] },
 ]

@@ -34,7 +34,7 @@ export default function ServicesPage() {
       <div className="container">
         <div className="section-head narrow">
           <span className="eyebrow">Our Services</span>
-          <h2>Domestic staffing for every household need</h2>
+          <h1>Nanny, Househelp &amp; Caregiver Services in Nairobi</h1>
         </div>
 
         <div className="card-grid">

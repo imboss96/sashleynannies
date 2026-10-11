@@ -24,12 +24,15 @@ npm start
 
 ## Deploying to LiteSpeed or Apache
 
-- Upload the contents of `dist/` to the web root (for example, `public_html/`), including the hidden `.htaccess` file. It rewrites requests for client-side routes to `index.html` while leaving existing files, directories, and `/api` requests untouched.
+- Run `npm run build`, then upload the contents of `dist/` to the web root (for example, `public_html/`), including the hidden `.htaccess` file. Every public route is emitted as static HTML in its own directory; `.htaccess` serves those files and returns `404.html` for unknown paths instead of falling back to the homepage.
 - If your hosting file manager hides dotfiles, enable showing hidden files before uploading `.htaccess`.
+- The host must support Apache-compatible `mod_rewrite` and `mod_headers` for redirects, the 404 document, security headers, and asset caching. Verify these responses after deployment.
 
 ## Search engine setup
 
-- `npm run build` generates `public/sitemap.xml` from the indexable routes in `src/seo.js` before building the site. Add metadata there when adding a public route; mark duplicate aliases with `sitemap: false` and pages that should not appear in results with `index: false`.
-- The build copies the root `robots.txt` into Vite's public assets, and generates the sitemap at `public/sitemap.xml`; both are published at the domain root from `dist/`. Vite also copies `public/.htaccess` into `dist/`.
+- `npm run build` generates optimized team WebP images, app icons, the sitemap, the Vite bundle, static HTML for each route, a `404.html`, and runs `scripts/seo-check.mjs`. Add public routes to `src/config/routes.js` and their metadata to `src/seo.js`.
+- Blog articles are maintained in `src/config/blogPosts.js`; add each article route to `src/config/routes.js` so it is prerendered and included in the sitemap. Article metadata and BlogPosting structured data are generated from that shared content.
+- The build copies `robots.txt` into `dist/`; the generated sitemap, icons, and `.htaccess` are also published at the domain root.
+- Optional analytics hooks use `VITE_GTM_ID` and `VITE_GSC_TOKEN`; leave them empty until the owner supplies verified IDs.
 - Add the domain property `sashleynannies.co.ke` in Google Search Console, complete domain verification through DNS, then submit `/sitemap.xml` and inspect the homepage and important service URLs.
 - Use Search Console reports and real customer questions to improve page content over time. Sitemap submission, structured data, and metadata help discovery and interpretation, but they do not guarantee rankings; useful original content, reputable links, and a fast, accessible site still matter.

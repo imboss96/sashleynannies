@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import LeadForm from '../components/LeadForm'
+import { consultationFaqs } from '../config/faqs'
 
 const consultationRoles = [
   {
@@ -43,21 +44,6 @@ const consultationSteps = [
     number: '03',
     title: 'Agree on next steps',
     description: 'We’ll explain the placement options to explore and confirm consultation scope, availability, and any fee before scheduling.',
-  },
-]
-
-const consultationFaqs = [
-  {
-    question: 'Do I need to know which service to choose before requesting a consultation?',
-    answer: 'No. Select Home-care consultation on the form and describe the tasks or support your household needs. The discussion can help clarify which staff role to explore.',
-  },
-  {
-    question: 'Is this a medical or care-needs assessment?',
-    answer: 'No. This consultation provides household placement guidance. It does not diagnose, assess clinical needs, or replace advice from a qualified health professional.',
-  },
-  {
-    question: 'Does a consultation guarantee that a staff member is available?',
-    answer: 'No. Availability depends on the role, location, schedule, and candidate availability. The team will confirm suitable options and timing after discussing your request.',
   },
 ]
 

@@ -1,5 +1,7 @@
 import LeadForm from '../components/LeadForm'
 import { Link } from 'react-router-dom'
+import { homeFaqs as faqs } from '../config/faqs'
+import { blogPosts } from '../config/blogPosts'
 
 const featureList = [
   {
@@ -80,28 +82,28 @@ const staffPreviews = [
     initials: 'MN',
     role: 'Professional Nanny',
     experience: 'Newborn and infant care, school routines, feeding, and play-based learning.',
-    image: '/images/team/mary-nanny.jpg',
+    image: '/images/team/mary-nanny.webp',
   },
   {
     alias: 'Kevin W.',
     initials: 'JW',
     role: 'Professional Housekeeper',
     experience: 'Deep cleaning, laundry and ironing, kitchen hygiene, and home organization.',
-    image: '/images/team/jane-housekeeper.jpg',
+    image: '/images/team/jane-housekeeper.webp',
   },
   {
     alias: 'Grace A.',
     initials: 'GA',
     role: 'Home Caregiver',
     experience: 'Elderly care, companionship, meal preparation, mobility support, and medication reminders.',
-    image: '/images/team/grace-caregiver.jpg',
+    image: '/images/team/grace-caregiver.webp',
   },
   {
     alias: 'Susan K.',
     initials: 'SK',
     role: 'Professional House Manager',
     experience: 'Household organization, staff coordination, inventory, and shopping management.',
-    image: '/images/team/susan-house-manager.jpg',
+    image: '/images/team/susan-house-manager.webp',
   },
 ]
 
@@ -120,45 +122,21 @@ const testimonials = [
   },
 ]
 
-const faqs = [
-  {
-    q: 'How does your nanny and caregiver screening work?',
-    a: 'The process includes candidate interviews, reference checks, and background review, including DCI verification. Ask our team which checks have been completed for a candidate before you proceed.',
-  },
-  {
-    q: 'How soon can I find a nanny or househelp in Nairobi?',
-    a: 'We aim to share suitable profiles within 24 to 48 hours after understanding your request. Timing depends on the role, schedule, location, and candidate availability, so confirm the expected timeline with our team.',
-  },
-  {
-    q: 'Which areas of Nairobi do you serve?',
-    a: 'We welcome enquiries from across Nairobi, including Kilimani, Westlands, Karen, Lavington, and Nairobi CBD. Share your estate and schedule so we can confirm availability for your request.',
-  },
-  {
-    q: 'What is the difference between a live-in and live-out nanny?',
-    a: 'A live-in nanny stays in the employer’s home under agreed accommodation and working arrangements. A live-out nanny travels to work for agreed hours and does not live in the home. Discuss schedules, duties, time off, and expectations before hiring.',
-  },
-  {
-    q: 'How much does it cost to hire a nanny or househelp?',
-    a: 'Placement and employment costs depend on the role, schedule, experience, and household requirements. Contact us for a current quote and confirm which agency and employment costs apply before making a decision.',
-  },
-  {
-    q: 'Do you offer replacement support after placement?',
-    a: 'The agency advertises a 30-day replacement support period. Ask for the current written terms, including eligibility and what the replacement covers, before confirming a placement.',
-  },
-  {
-    q: 'How do I apply for a nanny or caregiver job?',
-    a: 'Visit our Careers page for current candidate application information. The homepage booking form is for families and employers looking to hire staff.',
-  },
-  {
-    q: 'Where is the Sashley Nannies office?',
-    a: 'The office is at The Delta House, 3rd Floor, Room 326, University Way, Nairobi. Contact the team before visiting to confirm availability.',
-  },
-]
-
 export default function HomePage() {
   return (
     <>
       <section className="hero">
+        <img
+          className="hero-image"
+          src="https://res.cloudinary.com/csxrkqpi/image/upload/v1789380917/images_1.jpg"
+          srcSet="https://res.cloudinary.com/csxrkqpi/image/upload/f_webp,w_800,c_limit/v1789380917/images_1.jpg 800w, https://res.cloudinary.com/csxrkqpi/image/upload/f_webp,w_1600,c_limit/v1789380917/images_1.jpg 1600w"
+          sizes="(min-width: 1024px) 55vw, 100vw"
+          width="678"
+          height="452"
+          alt="Care professional providing attentive support at home"
+          fetchpriority="high"
+          decoding="async"
+        />
         <div className="container hero-grid">
           <div className="hero-copy">
             <span className="badge">Nairobi&apos;s Most Trusted Agency</span>
@@ -201,8 +179,8 @@ export default function HomePage() {
               calm, trustworthy, and genuinely aligned with your home routines.
             </p>
             <p>
-              From live-in childcare to executive home support, every placement is built around your family&apos;s values,
-              household flow, and daily rhythm so you feel confident from the first consultation onward.
+              From <Link to="/live-in-nanny-nairobi">live-in childcare</Link> to <Link to="/house-manager-nairobi">household management</Link>, every placement is built around your family&apos;s values,
+              household flow, and daily rhythm so you feel confident from the first consultation onward. Explore our <Link to="/services">nanny and househelp services</Link> to compare roles.
             </p>
           </div>
         </div>
@@ -281,6 +259,8 @@ export default function HomePage() {
                   <img
                     src={person.image}
                     alt={`Portrait for ${person.role}, shared with permission`}
+                    width="96"
+                    height="96"
                     loading="lazy"
                     onError={(event) => { event.currentTarget.hidden = true }}
                   />
@@ -363,6 +343,29 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section light-section" aria-labelledby="home-guides-title">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Family care resources</span>
+            <h2 id="home-guides-title">Practical guides for choosing care at home</h2>
+            <p>Explore clear, useful advice for Nairobi families comparing childcare options and preparing for a nanny placement.</p>
+          </div>
+          <div className="blog-grid">
+            {blogPosts.map((post) => (
+              <article className="blog-card" key={post.slug}>
+                <p className="blog-card-meta">{post.readTime} <span aria-hidden="true">·</span> Nairobi family guide</p>
+                <h3><Link to={`/blog/${post.slug}`}>{post.title}</Link></h3>
+                <p>{post.excerpt}</p>
+                <Link className="blog-read-link" to={`/blog/${post.slug}`}>
+                  Read the guide <span aria-hidden="true">→</span>
+                </Link>
+              </article>
+            ))}
+          </div>
+          <Link className="blog-index-link" to="/blog">Explore all family care guides</Link>
         </div>
       </section>
 

@@ -3,10 +3,12 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import BrandLogo from './BrandLogo'
 import SiteFooter from './SiteFooter'
 import WhatsAppFloat from './WhatsAppFloat'
+import CookieNotice from './CookieNotice'
 import SeoMetadata from './SeoMetadata'
+import Breadcrumbs from './Breadcrumbs'
 
 const navItems = [
-  { label: 'About Us', to: '/about' },
+  { label: 'About Us', to: '/#about' },
   { label: 'Why Choose Us', to: '/why-us' },
   { label: 'Services', to: '/services' },
   { label: 'Vetting Process', to: '/vetting-process' },
@@ -22,6 +24,16 @@ export default function Layout({ children }) {
   useEffect(() => {
     document.body.classList.add('react-site')
     return () => document.body.classList.remove('react-site')
+  }, [])
+
+  useEffect(() => {
+    const trackWhatsApp = (event) => {
+      if (!event.target.closest?.('a[href^="https://wa.me/"]')) return
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({ event: 'whatsapp_click' })
+    }
+    document.addEventListener('click', trackWhatsApp)
+    return () => document.removeEventListener('click', trackWhatsApp)
   }, [])
 
   useEffect(() => {
@@ -109,8 +121,9 @@ export default function Layout({ children }) {
         </div>
       </header>
 
-      <main>{children}</main>
+      <main><Breadcrumbs pathname={location.pathname} />{children}</main>
       <SiteFooter />
+      <CookieNotice />
       <WhatsAppFloat />
     </>
   )

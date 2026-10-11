@@ -1,23 +1,27 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
-import HomePage from './pages/HomePage'
-import WhyUsPage from './pages/WhyUsPage'
-import ServicesPage from './pages/ServicesPage'
-import ServiceDetailPage from './pages/ServiceDetailPage'
-import VettingPage from './pages/VettingPage'
-import ContactPage from './pages/ContactPage'
-import HomeCareConsultationPage from './pages/HomeCareConsultationPage'
-import PrivacyPage from './pages/PrivacyPage'
-import TermsPage from './pages/TermsPage'
-import CareersPage from './pages/CareersPage'
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const WhyUsPage = lazy(() => import('./pages/WhyUsPage'))
+const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'))
+const VettingPage = lazy(() => import('./pages/VettingPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const HomeCareConsultationPage = lazy(() => import('./pages/HomeCareConsultationPage'))
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
+const TermsPage = lazy(() => import('./pages/TermsPage'))
+const CareersPage = lazy(() => import('./pages/CareersPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const BlogPage = lazy(() => import('./pages/BlogPage'))
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'))
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Layout>
+    <Layout>
+      <Suspense fallback={<p role="status">Loading page…</p>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<HomePage />} />
           <Route path="/why-us" element={<WhyUsPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/nanny-agency-nairobi" element={<ServiceDetailPage slug="nanny-agency-nairobi" />} />
@@ -33,8 +37,11 @@ export default function App() {
           <Route path="/privacy.html" element={<Navigate to="/privacy" replace />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/terms.html" element={<Navigate to="/terms" replace />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </Layout>
-    </BrowserRouter>
+      </Suspense>
+    </Layout>
   )
 }

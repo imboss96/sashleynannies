@@ -4,7 +4,7 @@ export default function WhyUsPage() {
       <div className="container">
         <div className="section-head narrow">
           <span className="eyebrow">Why choose us</span>
-          <h2>Safe, thoughtful, and family-first staffing</h2>
+          <h1>Why Families Choose Sashley Nannies in Nairobi</h1>
         </div>
 
         <div className="feature-grid">
