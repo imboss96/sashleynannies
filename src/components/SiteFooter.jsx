@@ -17,8 +17,8 @@ export default function SiteFooter() {
             <span className="badge-pill">Medical Screened</span>
           </div>
         </div>
-        <div className="footer-col">
-          <h2 className="footer-title">Quick Links</h2>
+        <details className="footer-col footer-disclosure">
+          <summary className="footer-title">Quick Links</summary>
           <ul className="footer-links">
             <li><Link to="/#about">About Us</Link></li>
             <li><Link to="/why-us">Why Choose Us</Link></li>
@@ -32,9 +32,9 @@ export default function SiteFooter() {
             <li><Link to="/blog">Family Care Guides</Link></li>
             <li><a href="https://listingster.com/listing/nairobi,nairobi-cbd/nanny-agencies/sashley-nannies/" target="_blank" rel="noreferrer">Verified Listingster profile</a></li>
           </ul>
-        </div>
-        <div className="footer-col">
-          <h2 className="footer-title">Care Services</h2>
+        </details>
+        <details className="footer-col footer-disclosure">
+          <summary className="footer-title">Care Services</summary>
           <ul className="footer-links">
             <li><Link to="/live-in-nanny-nairobi">Live-in Nannies</Link></li>
             <li><Link to="/live-out-nanny-nairobi">Day / Live-out Staff</Link></li>
@@ -43,7 +43,7 @@ export default function SiteFooter() {
             <li><Link to="/home-care-consultation">Home-care consultation</Link></li>
             <li><Link to="/services">Elderly Caregivers</Link></li>
           </ul>
-        </div>
+        </details>
         <div className="footer-col">
           <h2 className="footer-title">Contact &amp; Location</h2>
           <ul className="footer-contact">

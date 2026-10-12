@@ -20,12 +20,12 @@ export default function CareersPage() {
               Explore training options, find out how to apply, and get the latest course information
               directly from Dezhub.
             </p>
-            <a className="btn btn-primary" href="https://dezhub.co.ke/" target="_blank" rel="noreferrer">
+            <a className="btn btn-primary" href="https://system.dezhubconnect.com/portal/join.php" target="_blank" rel="noreferrer">
               Visit Dezhub
             </a>
           </div>
           <p className="careers-note">
-            Training details and applications are managed by Dezhub. The link opens the Dezhub website in a new tab.
+            Training details and applications are managed by Dezhub. The link opens the Dezhub application portal in a new tab.
           </p>
         </div>
       </section>

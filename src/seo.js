@@ -7,9 +7,9 @@ import { blogPosts } from './config/blogPosts.js'
 export const siteUrl = SITE.url
 
 export const seoPages = {
-  '/': { title: 'Vetted Nannies & Caregivers in Nairobi | Sashley Nannies', description: 'Find vetted nannies, househelps, and caregivers in Nairobi. Sashley Nannies helps families hire trusted domestic staff with careful screening and support.' },
+  '/': { title: 'Nannies & Expatriate Household Support in Nairobi | Sashley', description: 'Find nanny, caregiver, househelp, and house manager placements in Nairobi. Sashley Nannies supports local and expatriate families with thoughtful matching and screening.' },
   '/why-us': { title: 'Why Choose Sashley Nannies | Trusted Care in Nairobi', description: 'See how Sashley Nannies supports families with careful candidate vetting, thoughtful matching, and follow-up after placement.' },
-  '/services': { title: 'Nanny, Househelp & Caregiver Services in Nairobi', description: 'Explore live-in and live-out nanny placements, househelp, and house manager services for families in Nairobi.' },
+  '/services': { title: 'Household Staffing for Local & Expatriate Families | Sashley', description: 'Explore nanny, caregiver, househelp, and house manager placements in Nairobi, with household staffing support for local and expatriate families.' },
   '/nanny-agency-nairobi': { title: 'Nanny Agency in Nairobi | Sashley Nannies', description: 'Connect with a nanny agency in Nairobi for vetted live-in and live-out nannies, newborn care, and childcare support matched to your family.' },
   '/house-help-nairobi': { title: 'Househelp in Nairobi | Vetted Domestic Staff', description: 'Find househelp in Nairobi for cleaning, laundry, meal preparation, and household support, matched to your home and routine.' },
   '/live-in-nanny-nairobi': { title: 'Live-in Nanny in Nairobi | Sashley Nannies', description: 'Find a vetted live-in nanny in Nairobi for consistent in-home childcare and support with your family’s daily routines.' },

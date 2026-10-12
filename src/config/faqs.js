@@ -12,6 +12,10 @@ export const homeFaqs = [
     a: 'We welcome enquiries from across Nairobi, including Kilimani, Westlands, Karen, Lavington, and Nairobi CBD. Share your estate and schedule so we can confirm availability for your request.',
   },
   {
+    q: 'Do you help expatriate families find household staff in Nairobi?',
+    a: 'Yes. We help expatriate and international households explore local nanny, caregiver, househelp, and house manager placements. Share your routine, schedule, and expectations so we can discuss suitable roles and confirm candidate availability.',
+  },
+  {
     q: 'What is the difference between a live-in and live-out nanny?',
     a: 'A live-in nanny stays in the employer’s home under agreed accommodation and working arrangements. A live-out nanny travels to work for agreed hours and does not live in the home. Discuss schedules, duties, time off, and expectations before hiring.',
   },

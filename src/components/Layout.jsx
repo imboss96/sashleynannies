@@ -116,7 +116,7 @@ export default function Layout({ children }) {
 
           <div className="nav-actions">
             <a href="/#contact" className="btn btn-primary">Hire a Nanny</a>
-            <a href="https://wa.me/254741448680" target="_blank" rel="noreferrer" className="btn btn-secondary">Apply for a Job</a>
+            <a href="https://system.dezhubconnect.com/portal/join.php" target="_blank" rel="noreferrer" className="btn btn-secondary">Apply for a Job</a>
           </div>
         </div>
       </header>

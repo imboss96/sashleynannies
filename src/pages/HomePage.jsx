@@ -142,8 +142,9 @@ export default function HomePage() {
             <span className="badge">Nairobi&apos;s Most Trusted Agency</span>
             <h1>Vetted Nannies, Househelps &amp; Caregivers in Nairobi</h1>
             <p>
-              Looking for a reliable nanny agency in Nairobi? Sashley Nannies helps families hire trusted,
-              safety-focused domestic staff with fast matching, DCI screening, and thoughtful guidance.
+              Looking for trusted household support in Nairobi? Sashley Nannies helps local and expatriate
+              families explore nanny, caregiver, househelp, and house manager placements with thoughtful
+              matching and screening.
             </p>
 
             <div className="hero-actions">
@@ -175,13 +176,25 @@ export default function HomePage() {
           <div>
             <p>
               Choosing the right caregiver is one of the most personal and important decisions a family can make.
-              At Sashley Nannies, we match busy households with professionals who are not only experienced, but also
-              calm, trustworthy, and genuinely aligned with your home routines.
+              At Sashley Nannies, we support local and expatriate households in Nairobi, matching families with
+              professionals whose experience and working arrangements suit their home routines.
             </p>
             <p>
               From <Link to="/live-in-nanny-nairobi">live-in childcare</Link> to <Link to="/house-manager-nairobi">household management</Link>, every placement is built around your family&apos;s values,
-              household flow, and daily rhythm so you feel confident from the first consultation onward. Explore our <Link to="/services">nanny and househelp services</Link> to compare roles.
+              household flow, communication preferences, and daily rhythm. We take time to understand the role,
+              schedule, and expectations—particularly helpful when settling into life in Nairobi. Explore our
+              <Link to="/services"> nanny and household staffing services</Link> to compare roles.
             </p>
+            <div className="founder-note">
+              <h3>A note from our founder</h3>
+              <p>
+                I believe a good placement starts with listening. Every household is different, so we take time
+                to understand your routines, expectations, and the kind of support you need. Our aim is to make
+                finding home-care support in Nairobi a clear, respectful process for both families and care
+                professionals.
+              </p>
+              <p className="founder-note-signoff">Founder, Sashley Nannies</p>
+            </div>
           </div>
         </div>
       </section>
@@ -230,7 +243,11 @@ export default function HomePage() {
           <div className="section-head center">
             <span className="eyebrow">Nanny and Household Staffing</span>
             <h2>Find the right home support in Nairobi</h2>
-            <p>Choose a role to see what the placement involves, then tell us about your household and preferred schedule.</p>
+            <p>
+              We help Nairobi families—including expatriate and international households—explore local home-care
+              professionals for childcare, caregiving, and household support. Choose a role to see what the placement
+              involves, then tell us about your household and preferred schedule.
+            </p>
           </div>
           <div className="service-grid">
             {homeServices.map((service) => (
@@ -317,6 +334,11 @@ export default function HomePage() {
             <p>
               Sashley Nannies receives enquiries from families across Nairobi, including Kilimani, Westlands, Karen,
               Lavington, and Nairobi CBD. Candidate availability can vary by location, role, and working hours.
+            </p>
+            <p>
+              We also work with expatriate families making a home in Nairobi. Share your household routines,
+              communication preferences, and expectations so we can discuss a suitable local staff role and confirm
+              candidate availability.
             </p>
             <p>
               When you enquire, include your estate, the type of support you need, your preferred start date, and the
